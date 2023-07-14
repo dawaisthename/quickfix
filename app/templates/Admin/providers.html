@@ -1,0 +1,33 @@
+{% extends "Admin/base.html" %}{% block content %}
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">service</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for provider in providers %} {% set increased_number = loop.index %}
+    <tr>
+      <th scope="row">{{increased_number}}</th>
+      <td>{{provider.name}}</td>
+      <td>{{provider.service_type}}</td>
+      <td>
+        <a class="btn btn-sm btn-info" href="/providers_update/{{provider.id}}"
+          >Update</a
+        >
+        <a
+          class="btn btn-sm btn-danger"
+          href="/providers_delete/{{provider.id}}"
+          >Delete</a
+        >
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+
+{% endblock %}

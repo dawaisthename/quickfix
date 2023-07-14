@@ -1,0 +1,51 @@
+ {% extends 'base.html' %} {% block content %}
+<style>
+    #footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+
+<section id="main" class="container">
+    <div class="container" style='margin-left: 10px;'>
+
+        <form action='' method="POST">
+            <div class="form-row" style="width: 700px; margin-left:150px;">
+                <div class="col">
+                    <input type="text" name="service" placeholder="service" />
+                </div>
+                <button type="submit" class="input-group-text">
+            Search
+          </button>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+            {%for service_provider in service_providers %}
+            <section class="box">
+                <h5 class="mb-1">Full Name: {{service_provider.name}}</h5>
+                <h6>{{service_provider.bio}}</h6>
+                <h4>{{service_provider.location}}</h4>
+                <h5>Contact: {{service_provider.contact}}</h3>
+                    {%for average in service_provider.average_rating%}
+                    <h4>Rating: {{average.value}}/5</h3>
+                    {%endfor%}
+                        <a href="{{url_for('view.rate', val=1,id=service_provider.id)}}">1</a> <a href="{{url_for('view.rate', val=2,id=service_provider.id)}}">2</a> <a href="{{url_for('view.rate', val=3,id=service_provider.id)}}">3</a> <a href="{{url_for('view.rate', val=4,id=service_provider.id)}}">4</a>
+                        <a href="{{url_for('view.rate', val=5,id=service_provider.id)}}">5</a>
+            </section>
+            <hr />
+            <hr /> {%endfor%}
+        </div>
+</section>
+
+
+
+
+</div>
+
+</body>
+{% endblock %}

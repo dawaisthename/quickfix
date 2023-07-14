@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='assets/css/main.css') }}"
+    />
+
+    <title>Quickfix</title>
+    <style>
+      .lower-flash-message {
+        position: absolute;
+        left: 10px;
+        top: 100px; /* Adjust this value to your desired position */
+      }
+    </style>
+  </head>
+
+  <body>
+    <header id="header" class="alt">
+      {%if user.is_authenticated%}
+      <nav id="nav">
+        <ul>
+          <li><a href="/index">Home</a></li>
+          <li>
+            <a href="#" class="icon solid fa-angle-down">services</a>
+            <ul>
+              <li>
+                <a href="{{ url_for('view.service', my_var='chef') }}">chef</a>
+              </li>
+              <li>
+                <a href="{{ url_for('view.service', my_var='painter') }}"
+                  >painter</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('view.service', my_var='electrician') }}"
+                  >Electrician</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('view.service', my_var='Plumber') }}"
+                  >Plumber</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('view.service', my_var='Handyman') }}"
+                  >Handyman</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('view.service', my_var='Roofer') }}"
+                  >Roofer</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('view.service', my_var='Gardener') }}"
+                  >Gardener</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{{ url_for('view.service', my_var='Fence Installer') }}"
+                  >Fence Installer</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('view.service', my_var='Maid') }}">Maid </a>
+              </li>
+              <li>
+                <a href="{{ url_for('view.service', my_var='Window Cleaner') }}"
+                  >Window Cleaner</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('view.service', my_var='Moving Company') }}"
+                  >Moving Company</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{{ url_for('view.service', my_var='Interior Designer') }}"
+                  >Interior Designer</a
+                >
+              </li>
+              <li>
+                <a href="{{ url_for('view.service', my_var='Carpet Cleaner') }}"
+                  >Carpet Cleaner</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{{ url_for('view.service', my_var='Home Security System Installer') }}"
+                  >Home Security System Installer</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li><a href="/about">about</a></li>
+          <li><a href="/logout" class="button">logout</a></li>
+        </ul>
+      </nav>
+      {%else %}
+      <h1><a href="/">QuickFix</a></h1>
+      <nav id="nav">
+        <ul>
+          <li><a href="/about">about</a></li>
+          <li><a href="/login" class="button">log in</a></li>
+        </ul>
+      </nav>
+      {%endif %}
+    </header>
+    <div class="flash-message-container lower-flash-message">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for message in messages %}
+
+      <script>
+        alert("{{message[1]|safe}}");
+      </script>
+
+      {% endfor %} {% endif %} {% endwith %}
+    </div>
+    {% block content %} {%endblock %}
+
+    <!-- Footer -->
+
+    <footer id="footer">
+      <ul class="icons">
+        <li>
+          <a href="#" class="icon brands fa-twitter"
+            ><span class="label">Twitter</span></a
+          >
+        </li>
+        <li>
+          <a href="#" class="icon brands fa-facebook-f"
+            ><span class="label">Facebook</span></a
+          >
+        </li>
+        <li>
+          <a href="#" class="icon brands fa-instagram"
+            ><span class="label">Instagram</span></a
+          >
+        </li>
+        <li>
+          <a href="#" class="icon brands fa-github"
+            ><span class="label">Github</span></a
+          >
+        </li>
+        <li>
+          <a href="#" class="icon brands fa-dribbble"
+            ><span class="label">Dribbble</span></a
+          >
+        </li>
+        <li>
+          <a href="#" class="icon brands fa-google-plus"
+            ><span class="label">Google+</span></a
+          >
+        </li>
+      </ul>
+      <ul class="copyright">
+        <li>&copy; Untitled. All rights reserved.</li>
+        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+      </ul>
+    </footer>
+
+    <script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.dropotron.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jquery.scrollex.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/browser.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/breakpoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+  </body>
+</html>

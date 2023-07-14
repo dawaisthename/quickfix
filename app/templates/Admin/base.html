@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+    <title>Admin Dashboard</title>
+    <style>
+    
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        height: 100vh;
+        width: 100%;
+        max-width: 100%;
+        
+      }
+      .dashboard{
+        display: flex;
+        align-items: center;
+        margin-left: 210px;
+      }
+      .widget{
+        padding:20px;
+        color:white;
+        width:250px;
+        text-align: center;
+        margin: 50px;
+        background-color: #333;
+      }
+
+      .sidebar {
+        width: 300px;
+        background: #333;
+        color: #fff;
+        padding: 20px;
+        margin-left:-20px;
+      }
+
+      .sidebar h2 {
+        color: #fff;
+        margin-bottom: 20px;
+      }
+
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar li {
+        margin-bottom: 10px;
+      }
+
+      .sidebar li a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        padding: 5px;
+      }
+
+      .sidebar li a:hover {
+        background: #555;
+      }
+
+      .content {
+        flex: 1;
+        padding: 20px;
+        background: #f4f4f4;
+      }
+
+      .content h2 {
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .content p {
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <div class="container">
+  <div class="sidebar">
+    <h3>QuickFix</h3>
+    <ul>
+      <li><a href="/admin">Dashboard</a></li>
+      <li><a href="/users">users</a> <a class="btn btn-sm btn-info" href="/users/add">Add</a></li>
+      <li><a href="/service_providers">providers</a>
+        <a class="btn btn-sm btn-info" href="/service_providers/add">Add</a></li>
+      <li><a href="/logout">logout</a></li>
+    </ul>
+  </div>
+   {% block content %} {%endblock %} 
+  </div>
+
+  <body>
+</html>
